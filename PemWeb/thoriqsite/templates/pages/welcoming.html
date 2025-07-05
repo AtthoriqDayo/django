@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Selamat Datang di PortalTech{% endblock %}
+
+{% block content %}
+<style>
+    /* Sedikit style agar lebih menarik */
+    .welcome-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        text-align: center;
+    }
+</style>
+
+<div class="container welcome-container">
+    <h1 class="display-3">Selamat Datang di PortalTech</h1>
+    <p class="lead">Pusat Berita Teknologi Terkini.</p>
+    <p>Anda akan diarahkan ke halaman login...</p>
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<script>
+    // JavaScript untuk mengarahkan pengguna setelah 5 detik
+    setTimeout(function() {
+        window.location.href = "{% url 'account_login' %}";
+    }, 5000); // 5000 milidetik = 5 detik
+</script>
+{% endblock %}

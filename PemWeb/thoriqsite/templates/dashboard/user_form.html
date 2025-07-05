@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ form_title }}{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="article-content-wrapper" data-aos="fade-up">
+                <h2 class="text-center mb-4">{{ form_title }}</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">{{ form.username.label_tag }} {{ form.username }}</div>
+                    <div class="mb-3">{{ form.email.label_tag }} {{ form.email }}</div>
+                    <div class="form-check mb-3">{{ form.is_staff }} {{ form.is_staff.label_tag }}</div>
+                    <div class="form-check mb-3">{{ form.is_active }} {{ form.is_active.label_tag }}</div>
+
+                    <button type="submit" class="btn btn-success mt-3">Simpan Perubahan</button>
+                    <a href="{% url 'dashboard:manage_users' %}" class="btn btn-secondary mt-3">Batal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

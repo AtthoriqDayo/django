@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Konfirmasi Hapus Pengguna{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="article-content-wrapper text-center" data-aos="fade-up">
+                <h2 class="mb-4">Konfirmasi Hapus</h2>
+                <p>Apakah Anda yakin ingin menghapus pengguna "<strong>{{ user_to_delete.username }}</strong>"?</p>
+                <p class="text-danger">Aksi ini tidak dapat dibatalkan.</p>
+                <form method="post" class="mt-4">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Ya, Saya Yakin, Hapus</button>
+                    <a href="{% url 'dashboard:manage_users' %}" class="btn btn-secondary">Batal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

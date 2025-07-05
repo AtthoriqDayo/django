@@ -1,0 +1,163 @@
+/* ======= Futuristic & Animated Gradient Theme ======= */
+
+/* 1. Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap');
+
+/* 2. Variabel Warna Utama */
+:root {
+  --primary: #38B6FF; /* Biru Neon */
+  --text-dark: #1f2d3d;
+  --text-light: #f4f7fa;
+  --glass-bg: rgba(26, 26, 26, 0.4); /* Latar belakang kaca gelap semi-transparan */
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* 3. Latar Belakang Gradien Animasi */
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-light); /* Warna teks terang agar kontras dengan background gelap */
+  margin: 0;
+  background: linear-gradient(135deg, #00c9b5, #48c8f3, #7613b8);
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 4. Teks & Judul */
+h1, h2, h3, h4, .navbar-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+.navbar-brand {
+    color: var(--primary) !important;
+}
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #ffffff;
+}
+
+/* 5. Navbar dengan Efek Kaca (Glassmorphism) */
+.navbar {
+  background-color: rgba(14, 16, 26, 0.6) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 6. Kartu Artikel dengan Efek Kaca */
+.article-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  color: var(--text-light);
+}
+.article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 40px rgba(56, 182, 255, 0.3);
+}
+.article-card .card-title {
+    color: white;
+}
+.article-card .card-text {
+    color: #adb5bd;
+}
+.article-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.article-card .btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+/* 7. Panel Detail Artikel */
+.article-content-wrapper {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  color: var(--text-light);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+.article-detail-content p, .article-detail-content li {
+    color: #ced4da;
+}
+.article-detail-content a {
+    text-decoration: underline;
+}
+
+#id_login,
+#id_password,
+#id_email,
+#id_username,
+#id_password1,
+#id_password2,
+#id_old_password,
+#id_new_password1,
+#id_new_password2 {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-light) !important; /* Memaksa warna teks menjadi terang */
+    background-color: rgba(0, 0, 0, 0.25) !important; /* Memberi background gelap transparan */
+    background-clip: padding-box;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Garis tepi yang terlihat */
+    border-radius: var(--radius);
+    transition: all .15s ease-in-out;
+}
+
+/* Memberi warna pada teks placeholder */
+#id_login::placeholder,
+#id_password::placeholder,
+#id_email::placeholder,
+#id_username::placeholder {
+    color: rgba(244, 247, 250, 0.5);
+    opacity: 1;
+}
+
+/* Style saat input di-klik (focus) */
+#id_login:focus,
+#id_password:focus,
+#id_email:focus,
+#id_username:focus,
+#id_password1:focus,
+#id_password2:focus,
+#id_old_password:focus,
+#id_new_password1:focus,
+#id_new_password2:focus {
+    border-color: var(--primary);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(56, 182, 255, 0.25) !important;
+}
+
+html {
+    height: 100%;
+}
+
+main {
+    flex-grow: 1; /* Mendorong konten utama untuk mengisi ruang kosong */
+}
+

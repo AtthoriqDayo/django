@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Kelola Pengguna{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="article-content-wrapper" data-aos="fade-up">
+        <h1 class="mb-4 text-center">Kelola Pengguna</h1>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Status Staff</th>
+                        <th>Aktif</th>
+                        <th>Tanggal Bergabung</th>
+                        <th class="text-end">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr>
+                        <td>{{ u.username }}</td>
+                        <td>{{ u.email }}</td>
+                        <td>{{ u.is_staff|yesno:"✅,❌" }}</td>
+                        <td>{{ u.is_active|yesno:"✅,❌" }}</td>
+                        <td>{{ u.date_joined|date:"d M Y" }}</td>
+                        <td class="text-end">
+                            <a href="{% url 'dashboard:edit_user' u.pk %}" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a href="{% url 'dashboard:delete_user' u.pk %}" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i> Hapus
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">Belum ada pengguna yang terdaftar.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

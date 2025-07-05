@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Admin Dashboard</h1>
+    <p class="lead">Selamat datang kembali, <strong>{{ username }}</strong>!</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Manajemen Konten</h5>
+                    <p class="card-text">Kelola artikel dan berita yang ditampilkan di website.</p>
+                    <a href="{% url 'dashboard:manage_articles' %}" class="btn btn-primary">Kelola Artikel</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Impor Berita (GNewsAPI)</h5>
+                    <p class="card-text">Ambil berita terbaru dari sumber eksternal untuk dipublikasikan.</p>
+                    <a href="{% url 'dashboard:import_news' %}" class="btn btn-info">Impor Berita</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Manajemen Pengguna</h5>
+                    <p class="card-text">Lihat dan kelola pengguna yang terdaftar di website.</p>
+                    <a href="{% url 'dashboard:manage_users' %}" class="btn btn-success">Kelola Pengguna</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

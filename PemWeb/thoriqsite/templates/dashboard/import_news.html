@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Impor Berita{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Impor Berita dari NewsAPI</h1>
+    <p>Berikut adalah berita teknologi terbaru dari Indonesia. Pilih berita yang ingin Anda simpan ke website.</p>
+
+    {% for item in articles_from_api %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text text-muted small">Sumber: {{ item.source.name }}</p>
+            <p class="card-text">{{ item.description }}</p>
+            
+            <form action="{% url 'dashboard:save_news' %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="hidden" name="title" value="{{ item.title }}">
+                <input type="hidden" name="content" value="{{ item.content }}">
+                <input type="hidden" name="source_url" value="{{ item.url }}">
+                <input type="hidden" name="image_url" value="{{ item.image }}">
+                <button type="submit" class="btn btn-success">Simpan ke Website</button>
+            </form>
+            <a href="{{ item.url }}" target="_blank" class="btn btn-secondary">Lihat Sumber Asli</a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-warning">Tidak dapat mengambil berita dari NewsAPI saat ini atau tidak ada berita baru.</div>
+    {% endfor %}
+</div>
+{% endblock %}
